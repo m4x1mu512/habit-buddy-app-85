@@ -1,5 +1,5 @@
 {
-  "name": "tanstack_start_ts",
+  "name": "my-habits",
   "private": true,
   "sideEffects": false,
   "type": "module",
@@ -11,7 +11,10 @@
     "lint": "eslint .",
     "format": "prettier --write .",
     "test": "vitest run",
-    "test:watch": "vitest"
+    "test:watch": "vitest",
+    "cap:sync": "cap sync android",
+    "android:open": "cap open android",
+    "android:build": "npm run build && cap sync android && cd android && ./gradlew assembleDebug"
   },
   "overrides": {
     "rolldown": "1.2.1"
