@@ -43,20 +43,34 @@ jobs:
       - name: Build web app
         run: npm run build
 
-      - name: Verify web assets
+            - name: Inspect build output
         run: |
-          echo "Содержимое dist:"
-          find dist -maxdepth 4 -type f -print
+          echo "Корень проекта:"
+          find . -maxdepth 3 -type f \
+            -not -path "./node_modules/*" \
+            -not -path "./.git/*" \
+            | sort
 
-          if [ ! -f "dist/client/index.html" ]; then
-            echo "Ошибка: файл dist/client/index.html не найден"
-            exit 1
-          fi
+          echo "Папка dist:"
+          find dist -maxdepth 6 -print 2>/dev/null || true
 
-          echo "Файл dist/client/index.html найден"
+          echo "Папка .output:"
+          find .output -maxdepth 6 -print 2>/dev/null || true
 
-      - name: Capacitor sync
-        run: npx cap sync android
+          echo "Все index.html:"
+          find . -type f -name "index.html" \
+            -not -path "./node_modules/*" \
+            -not -path "./.git/*" \
+            -print
+
+          echo "Все HTML-файлы:"
+          find . -type f -name "*.html" \
+            -not -path "./node_modules/*" \
+            -not -path "./.git/*" \
+            -print
+
+      # - name: Capacitor sync
+      #   run: npx cap sync android
 
       - name: Make gradlew executable
         run: chmod +x android/gradlew
