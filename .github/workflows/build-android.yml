@@ -40,20 +40,8 @@ jobs:
         run: |
           if [ -f package-lock.json ]; then npm ci; else npm install; fi
 
-            - name: Build web app
+                  - name: Build web app
         run: npm run build
-
-      - name: Verify web assets
-        run: |
-          echo "Содержимое dist:"
-          find dist -maxdepth 3 -type f -print
-
-          if [ ! -f "dist/index.html" ]; then
-            echo "Ошибка: файл dist/index.html не найден"
-            exit 1
-          fi
-
-          echo "Файл dist/index.html найден"
 
       - name: Capacitor sync
         run: npx cap sync android
