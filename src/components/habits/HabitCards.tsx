@@ -10,7 +10,7 @@ const Row = ({ icon: Icon, children }: { icon: typeof Clock; children: React.Rea
 );
 
 export function HabitCard({ habit, onEdit, onArchive, onDelete }: {
-  habit: Habit; onEdit: () => void; onArchive: () => void; onDelete?: () => void;
+  habit: Habit; onEdit: () => void; onArchive: () => void; onDelete?: (() => void) | undefined;
 }) {
   return (
     <article className="animate-rise rounded-2xl border bg-card p-4 shadow-sm">
