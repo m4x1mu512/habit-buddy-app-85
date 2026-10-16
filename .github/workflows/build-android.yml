@@ -40,7 +40,7 @@ jobs:
         run: |
           if [ -f package-lock.json ]; then npm ci; else npm install; fi
 
-                  - name: Build web app
+      - name: Build web app
         run: npm run build
 
       - name: Capacitor sync
