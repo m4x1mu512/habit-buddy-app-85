@@ -10,7 +10,7 @@ const config: CapacitorConfig = {
   appId: APP_ID,
   appName: "Мои привычки",
   // `npm run build` writes the static app into dist/client (dist/server is unused on Android).
-  webDir: "dist/client",
+  webDir: "dist",
   android: {
     adjustMarginsForEdgeToEdge: "auto",
     allowMixedContent: false,
