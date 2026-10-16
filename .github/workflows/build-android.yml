@@ -46,14 +46,14 @@ jobs:
       - name: Verify web assets
         run: |
           echo "Содержимое dist:"
-          find dist -maxdepth 3 -type f -print
+          find dist -maxdepth 4 -type f -print
 
-          if [ ! -f "dist/index.html" ]; then
-            echo "Ошибка: файл dist/index.html не найден"
+          if [ ! -f "dist/client/index.html" ]; then
+            echo "Ошибка: файл dist/client/index.html не найден"
             exit 1
           fi
 
-          echo "Файл dist/index.html найден"
+          echo "Файл dist/client/index.html найден"
 
       - name: Capacitor sync
         run: npx cap sync android
