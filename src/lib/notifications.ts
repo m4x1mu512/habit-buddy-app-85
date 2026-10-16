@@ -51,7 +51,7 @@ export async function scheduleHabit(
 ): Promise<Pick<Habit, "notificationId" | "scheduledIds">> {
   const base = h.notificationId ?? newNotificationBase();
   if (!isNative()) return { notificationId: base, scheduledIds: [] };
-  const [hour, minute] = h.reminderTime.split(":").map(Number);
+  const [hour = 9, minute = 0] = h.reminderTime.split(":").map(Number);
   const today = todayISO();
   const common = {
     title: h.title,
